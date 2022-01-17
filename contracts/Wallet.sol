@@ -1,8 +1,9 @@
 pragma solidity >=0.4.22 <0.9.0;
+pragma experimental ABIEncoderV2;
 
 contract Wallet {
   address[] public approvers;
-  uint public quorum;
+  uint public quorum; // Number of approvers needed to execute a smart contract method
 
   struct Transfer {
     uint id;
@@ -16,7 +17,7 @@ contract Wallet {
   // mapping(uint => Transfer) public transfers;
   // uint public nextId;
 
-  constructor(address[] memory _approvers, uint _quorum) {
+  constructor(address[] memory _approvers, uint _quorum) public {
     approvers = _approvers;
     quorum = _quorum;
   }
